@@ -8,6 +8,7 @@ import static utilities.JavaScriptUtility.scrollToElementJS;
 public class WidgetsPage extends HomePage {
 
     private final By selectMenuItem=By.xpath("//li[@id='item-8']/span[text()='Select Menu']");
+    private final By dataPickerMenuItem= By.xpath("//li[@id='item-2']/span[text()='Date Picker']");
 
 
     public SelectMenuPage clickSelectMenu(){
@@ -15,5 +16,12 @@ public class WidgetsPage extends HomePage {
         click(selectMenuItem);
 
         return new SelectMenuPage();
+    }
+
+    public DatePickerPage clickDatePicker(){
+        scrollToElementJS(dataPickerMenuItem);
+        click(dataPickerMenuItem);
+
+        return  new DatePickerPage();
     }
 }
