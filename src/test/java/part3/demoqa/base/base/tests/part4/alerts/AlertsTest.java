@@ -31,5 +31,18 @@ public class AlertsTest extends BaseTest {
         assertEquals(expectConfirmationText,actualConfirmationText,"\n You did not select Cancel\n");
     }
 
+    public void testPromptAlerts(){
+
+        String alertText= "Selenium";
+        var alertsPage= homePage.goToAlertsFramesWindows().clickAlertsMenuItem();
+        alertsPage.clickPromptAlertButton();
+        setAlertText(alertText);
+        acceptAlert();
+        String actualText=alertsPage.getPromptResultText();
+        String expectedText= "You entered "+ alertText;
+
+        assertEquals(actualText,expectedText);
+    }
+
 
 }
