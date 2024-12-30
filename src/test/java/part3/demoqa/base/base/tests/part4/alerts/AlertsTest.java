@@ -4,12 +4,12 @@ import org.testng.annotations.Test;
 import part3.demoqa.base.BaseTest;
 
 import static org.testng.Assert.*;
-import static utilities.SwitchToUtility.acceptAlert;
-import static utilities.SwitchToUtility.getAlertText;
+import static utilities.SwitchToUtility.*;
 
+@Test
 public class AlertsTest extends BaseTest {
 
-    @Test
+
     public void testInformationAlerts(){
         var alertsPage= homePage.goToAlertsFramesWindows().clickAlertsMenuItem();
         alertsPage.clickAlertButton();
@@ -19,4 +19,17 @@ public class AlertsTest extends BaseTest {
         acceptAlert();
         alertsPage.clickAlertButton();
     }
+
+
+    public void testConfirmationAlerts(){
+        var alertsPage= homePage.goToAlertsFramesWindows().clickAlertsMenuItem();
+        alertsPage.clickConfirmationAlertButton();
+        dismissAlert();
+
+        String expectConfirmationText= alertsPage.getConfirmationResult();
+        String actualConfirmationText="You selected Cancel";
+        assertEquals(expectConfirmationText,actualConfirmationText,"\n You did not select Cancel\n");
+    }
+
+
 }
